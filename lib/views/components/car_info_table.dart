@@ -10,22 +10,29 @@ class CarInfoTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              columnName,
-              style: const TextStyle(
-                fontSize: 16,
+        Container(
+          padding: EdgeInsets.only(bottom: 40, right: 80),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 6.0),
+                child: Text(
+                  columnName,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
               ),
-            ),
-            Text(carInfo,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),)
-          ],
+              Text(carInfo,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ],
+          ),
         ),
       ],
     );
