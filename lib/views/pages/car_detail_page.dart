@@ -50,10 +50,12 @@ class _CarDetail extends State<CarDetailPage> {
           child: PageSection(
             titleEvent: 'Général',
             widget: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                     margin: const EdgeInsets.only(top: 50),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       //TODO : ajouter les paramètres dynamiques
                       children: const [
                         CarInfoTable(columnName: 'Type', carInfo: 'Diesel'),
@@ -66,6 +68,7 @@ class _CarDetail extends State<CarDetailPage> {
                 Container(
                     margin: const EdgeInsets.only(top: 50),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       //TODO : ajouter les paramètres dynamiques
                       children: const [
                         CarInfoTable(columnName: 'Norme Euro', carInfo: 'EU6'),
