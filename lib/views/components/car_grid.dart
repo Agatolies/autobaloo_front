@@ -12,6 +12,14 @@ class CarGrid extends StatelessWidget {
     return LayoutBuilder(
         builder: (BuildContext ctx, BoxConstraints constraints) {
       final bool isDesktop = constraints.maxWidth >= 800;
+      final bool isLargeDesktop = constraints.maxWidth >= 1200;
+
+      int crossAxisCount = 1;
+      if (isLargeDesktop) {
+        crossAxisCount = 3;
+      } else if (isDesktop) {
+        crossAxisCount = 2;
+      }
 
       return GridView.builder(
         itemCount: cars.length,
@@ -19,9 +27,10 @@ class CarGrid extends StatelessWidget {
           return CarCard.fromCar(cars[index]);
         },
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: isDesktop ? 3 : 1,
+            crossAxisCount: crossAxisCount,
             mainAxisSpacing: 10,
-            crossAxisSpacing: 10),
+            crossAxisSpacing: 10,
+            childAspectRatio: 4 / 5),
         primary: false,
         padding: const EdgeInsets.all(10),
         shrinkWrap: true,

@@ -1,4 +1,4 @@
-import 'package:autobaloo/constants.dart';
+import 'package:autobaloo/core/constants.dart';
 import 'package:autobaloo/models/car.dart';
 import 'package:autobaloo/views/components/car_chips.dart';
 import 'package:autobaloo/views/components/new_banner.dart';
@@ -21,7 +21,7 @@ class CarCard extends StatelessWidget {
     final modelImage = model.modelImages![0];
 
     return GestureDetector(
-      onTap: () => GoRouter.of(context).go('/car-detail/${car.id}'),
+      onTap: () => GoRouter.of(context).push('/car-detail/${car.id}'),
       child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(
@@ -42,36 +42,40 @@ class CarCard extends StatelessWidget {
                   style: const TextStyle(fontSize: 10, color: Colors.grey),
                 ),
                 trailing: Visibility(
-                    visible: EuropeanFormatter.isAfter12152022(car.carDateAdded),
+                    visible:
+                        EuropeanFormatter.isAfter12152022(car.carDateAdded),
                     child: const NewBanner()),
               ),
               Container(
-                constraints: const BoxConstraints(minHeight: 200, maxHeight: 300),
+                constraints: const BoxConstraints(
+                    minHeight: 240, maxHeight: 240, minWidth: double.infinity),
                 child: Image.network(
-                  height: 300,
                   '$apiRootEndpoint${modelImage.url}',
                   fit: BoxFit.cover,
                 ),
               ),
-              ListTile(
-                title: Text(
-                  model.modelName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+              Container(
+                constraints: const BoxConstraints(minHeight: 50),
+                child: ListTile(
+                  title: Text(
+                    model.modelName,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                subtitle: Text(
-                  model.modelVariant,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Colors.grey,
+                  subtitle: Text(
+                    model.modelVariant,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-                trailing: const Icon(
-                  Icons.favorite_border,
-                  color: Colors.red,
-                  size: 20,
+                  trailing: const Icon(
+                    Icons.favorite_border,
+                    color: Colors.red,
+                    size: 20,
+                  ),
                 ),
               ),
               Padding(

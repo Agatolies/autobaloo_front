@@ -1,4 +1,4 @@
-import 'package:autobaloo/constants.dart';
+import 'package:autobaloo/core/constants.dart';
 import 'package:autobaloo/models/brand.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -64,12 +64,11 @@ class BrandCardMini extends StatelessWidget {
           return Padding(
               padding: EdgeInsets.all(isDesktop ? 20 : 6),
               child: Tooltip(
-                message: brand.brandName!,
-                child: CachedNetworkImage(
-                  imageUrl: '$apiRootEndpoint${brand.model!.brandLogo!.url}',
-                  fit: BoxFit.fitWidth,
-                )
-              ));
+                  message: brand.brandName!,
+                  child: CachedNetworkImage(
+                    imageUrl: '$apiRootEndpoint${brand.model!.brandLogo!.url}',
+                    fit: BoxFit.fitWidth,
+                  )));
         }));
   }
 }
