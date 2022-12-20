@@ -1,4 +1,4 @@
-import 'package:autobaloo/constants.dart';
+import 'package:autobaloo/core/constants.dart';
 import 'package:autobaloo/services/auth_service.dart';
 import 'package:autobaloo/services/brand_service.dart';
 import 'package:autobaloo/services/car_model_service.dart';
