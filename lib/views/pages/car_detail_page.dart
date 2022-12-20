@@ -42,17 +42,43 @@ class _CarDetail extends State<CarDetailPage> {
                 return const CircularProgressIndicator();
               }
             }),
-        PageSection(
-          titleEvent: 'Général',
-          widget: Container(
-            child: Row(
-              children: Column[
-                CarInfoTable('Type', 'Diesel'),
-
-              ],
-            )
+        Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
           ),
+          child: PageSection(
+            titleEvent: 'Général',
+            widget: Row(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: Column(
+                      //TODO : ajouter les paramètres dynamiques
+                      children: const [
+                        CarInfoTable(columnName: 'Type', carInfo: 'Diesel'),
+                        CarInfoTable(columnName: 'Année du modèle', carInfo: '2022'),
+                        CarInfoTable(columnName: 'Couleur', carInfo: 'Noire'),
+                        CarInfoTable(columnName: 'Kilométrage', carInfo: '53.200'),
+                      ],
+                    )
+                ),
+                Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: Column(
+                      //TODO : ajouter les paramètres dynamiques
+                      children: const [
+                        CarInfoTable(columnName: 'Norme Euro', carInfo: 'EU6'),
+                        CarInfoTable(columnName: 'Puissance', carInfo: '81 kw (110 cv'),
+                        CarInfoTable(columnName: 'Nombre de portes', carInfo: '5'),
+                        CarInfoTable(columnName: 'Nombre de sièges', carInfo: '5'),
+                      ],
+                    )
+                ),
+              ],
             ),
+              ),
+        ),
         Container(
           margin: const EdgeInsets.only(top: 30, right: 30, bottom: 30),
           child: Row(
