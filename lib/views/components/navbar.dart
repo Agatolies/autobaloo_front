@@ -11,6 +11,7 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
+            //TODO : changer avec les paramètres du compte utilisateur
             accountName: const Text('accountName'),
             accountEmail: const Text('accountEmail'),
             currentAccountPicture: CircleAvatar(
@@ -34,9 +35,9 @@ class NavBar extends StatelessWidget {
             onTap: () => GoRouter.of(context).goNamed('home'),
           ),
           ListTile(
-            leading: const Icon(Icons.favorite),
-            title: const Text('Favorites'),
-            onTap: () => {},
+            leading: const Icon(Icons.account_box),
+            title: const Text('Mon compte'),
+            onTap: () => GoRouter.of(context).goNamed('account'),
           ),
           ListTile(
             leading: const Icon(Icons.car_rental),

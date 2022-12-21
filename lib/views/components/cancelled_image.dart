@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class SuccessImage extends StatelessWidget {
-  const SuccessImage({
+class CancelledImage extends StatelessWidget {
+  const CancelledImage({
     Key? key,
-}) : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class SuccessImage extends StatelessWidget {
       child: Container(
         height: 500,
         width: 500,
-        child: Image.asset('images/success.jpg'),
+        child: Image.asset('images/cancelled.jpg'),
       ),
     );
   }

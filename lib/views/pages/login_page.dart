@@ -110,7 +110,16 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                 ),
                 const SizedBox(height: 20),
-                const Text('Pas encore de compte ? Créer un compte'),
+                TextButton(
+                  child: Text(
+                    'Pas encore de compte ? Créer un compte',
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 15),
+                  ),
+                  onPressed: () => GoRouter.of(context).goNamed(
+                    'register',
+                  ),
+                ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Divider(),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409580918673",
+    "project_id": "autobaloo-e372d",
+    "storage_bucket": "autobaloo-e372d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409580918673:android:944f1bdc97aa9846d9ac30",
+        "android_client_info": {
+          "package_name": "com.example.autobaloo_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409580918673-nhnqigv0lppaphi9975f1v5i4grisnu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLiYk3C7-_c6VKglK_0nSol0b9IExx9Zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409580918673-nhnqigv0lppaphi9975f1v5i4grisnu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
