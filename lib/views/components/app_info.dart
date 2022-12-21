@@ -8,20 +8,13 @@ class AppInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        children: [
-      IconButton(
-          onPressed: () => GoRouter.of(context).go('/login'),
-          icon: const Icon(Icons.login_outlined),
-      tooltip: 'Se connecter',),
-      // TO DO : transformer l'icon en "quitter" une fois que l'utilisateur est connecté
-      IconButton(
-        icon: const Icon(Icons.info_outline_rounded),
-        tooltip: 'Informations',
-        onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text("Développé par Laure D'Este et Jonathan Damico"))),
-      ),
-    ],);
+    return IconButton(
+      icon: const Icon(Icons.info_outline_rounded),
+      tooltip: 'Informations',
+      onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content:
+                  Text("Développé par Laure D'Este et Jonathan Damico"))),
+    );
   }
 }

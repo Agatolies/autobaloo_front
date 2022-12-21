@@ -23,7 +23,6 @@ class TitleSection extends StatelessWidget {
           if (leading != null) leading!,
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   title,

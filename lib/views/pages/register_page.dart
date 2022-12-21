@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               margin: const EdgeInsets.only(right: 30),
               child: ElevatedButton(
-                  onPressed: () => GoRouter.of(context).goNamed('home'),
+                  onPressed: () => context.goNamed('home'),
                   style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(
                         fontSize: 14,

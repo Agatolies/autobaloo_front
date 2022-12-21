@@ -1,9 +1,7 @@
 import 'package:autobaloo/views/components/cancelled_image.dart';
-import 'package:autobaloo/views/components/success_image.dart';
+import 'package:autobaloo/views/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../layouts/main_layout.dart';
 
 class RentCancellationPage extends StatelessWidget {
   const RentCancellationPage({super.key});
@@ -22,7 +20,7 @@ class RentCancellationPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(right: 30),
               child: ElevatedButton(
-                  onPressed: () => GoRouter.of(context).goNamed('home'),
+                  onPressed: () => context.goNamed('home'),
                   style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(
                         fontSize: 14,

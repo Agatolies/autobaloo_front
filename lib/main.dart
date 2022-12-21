@@ -1,12 +1,14 @@
 import 'package:autobaloo/auth_gate.dart';
 import 'package:autobaloo/firebase_options.dart';
+import 'package:autobaloo/routes.dart';
 import 'package:autobaloo/service_locator.dart';
+import 'package:autobaloo/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-const clientId = 'YOUR_CLIENT_ID';
+const clientId = '409580918673-nhnqigv0lppaphi9975f1v5i4grisnu9.apps.googleusercontent.com';
 
 void main() async {
   //  concrete binding for applications based on the Widgets framework
@@ -31,11 +33,11 @@ void main() async {
   setPathUrlStrategy();
 
   // Start the app
-  runApp(const MyApp());
+  runApp(const AutoBalooApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AutoBalooApp extends StatelessWidget {
+  const AutoBalooApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -44,7 +46,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AuthGate(),
+      home: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'AutoBaloo',
+        theme: autoBalooTheme,
+        routerConfig: AutoBalooRouter().router,
+      )
     );
   }
 }

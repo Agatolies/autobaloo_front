@@ -1,3 +1,4 @@
+import 'package:autobaloo/main.dart';
 import 'package:autobaloo/routes.dart';
 import 'package:autobaloo/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 
 class AuthGate extends StatelessWidget {
-  const AuthGate({super.key});
+  final Widget child;
+
+  const AuthGate({
+    super.key,
+    required this.child
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +20,10 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return SignInScreen(
-
             providerConfigs: const [
               EmailProviderConfiguration(),
               GoogleProviderConfiguration(
-                  clientId:
-                  '409580918673-nhnqigv0lppaphi9975f1v5i4grisnu9.apps.googleusercontent.com'),
+                  clientId: clientId),
             ],
             headerBuilder: (context, constraints, shrinkOffset) {
               return Padding(
@@ -32,7 +36,7 @@ class AuthGate extends StatelessWidget {
             },
             subtitleBuilder: (context, action) {
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 child: action == AuthAction.signIn
                     ? const Text('Welcome to FlutterFire, please sign in!')
                     : const Text('Welcome to Flutterfire, please sign up!'),
@@ -59,14 +63,7 @@ class AuthGate extends StatelessWidget {
           );
         }
 
-        // TODO: return the router
-        // return const HomePage();
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'AutoBaloo',
-          theme: autoBalooTheme,
-          routerConfig: AutoBalooRouter().router,
-        );
+        return child;
       },
     );
   }

@@ -1,9 +1,8 @@
 import 'package:autobaloo/views/layouts/main_layout.dart';
+import 'package:autobaloo/views/sections/title_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:go_router/go_router.dart';
-
-import '../sections/title_icon.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -16,46 +15,40 @@ class AccountPage extends StatelessWidget {
         style: Theme.of(context).textTheme.displaySmall,
       ),
       const SignOutButton(),
-      Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: const PageSection(
-            titleEvent: 'Bienvenue sur votre compte',
-            //TODO : insérer un formulaire reprenant les données utilisateurs
-            widget: Text('David Scarafone'),
-          ),
-      ),
+      const TitleSection(title: 'Bienvenue sur votre compte'),
+      //TODO : insérer un formulaire reprenant les données utilisateurs
       Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        child: const PageSection(
-          titleEvent: 'Vos achats',
-          //TODO : insérer un récapitulatif des achats de l'utilisateur
-          widget: Text("Vous n'avez aucun achat pour l'instant"),
-        ),
+        child: const Text('David Scarafone'),
       ),
+      const TitleSection(title: 'Vos achats'),
+      //TODO : insérer un récapitulatif des achats de l'utilisateur
       Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        child: const PageSection(
-          titleEvent: 'Vos réservations',
-          // TODO: insérer un récaptilatif des futures location de l'utilisateur
-          widget: Text("Vous n'avez aucune réservation pour l'instant"),
+        child: const Text("Vous n'avez aucun achat pour l'instant"),
+      ),
+      const TitleSection(title: 'Vos réservations'),
+      // TODO: insérer un récaptilatif des futures location de l'utilisateur
+      Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
         ),
+        child: const Text("Vous n'avez aucune réservation pour l'instant"),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => GoRouter.of(context).goNamed('home'),
+                onPressed: () => context.goNamed('home'),
                 style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(
                       fontSize: 14,
@@ -72,7 +65,7 @@ class AccountPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const [
-                    Text("Accueil"),
+                    Text('Accueil'),
                     Icon(Icons.arrow_circle_right_outlined),
                   ],
                 )),

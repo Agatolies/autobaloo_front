@@ -10,7 +10,7 @@ class AutoBalooLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).goNamed('home'),
+      onTap: () => context.goNamed('home'),
       child: Text(
         'AutoBaloo',
         style: GoogleFonts.satisfy(

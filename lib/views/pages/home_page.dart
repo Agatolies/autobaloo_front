@@ -7,7 +7,7 @@ import 'package:autobaloo/views/components/brand_card_mini.dart';
 import 'package:autobaloo/views/components/car_grid.dart';
 import 'package:autobaloo/views/layouts/main_layout.dart';
 import 'package:autobaloo/views/sections/hero_section.dart';
-import 'package:autobaloo/views/sections/title_icon.dart';
+import 'package:autobaloo/views/sections/title_section.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,7 +37,14 @@ class _HomePageState extends State<HomePage> {
       children: [
         //_buildTitleSection(),
         _buildHeroSection(),
+        const TitleSection(
+            title: 'Offres du mois',
+            subtitle: 'Des réductions exceptionnelles pour ce mois-ci'),
         _buildCarsMonthlyOfferSection(),
+        const TitleSection(
+            title: 'Nos nouveautés',
+            subtitle:
+                'Des véhicules de tous types pour toutes vos envies de conduite'),
         _buildCarsNewArrivalSection(),
       ],
     );
@@ -88,7 +95,7 @@ class _HomePageState extends State<HomePage> {
       Padding(
         padding: const EdgeInsets.only(left: 32, right: 32),
         child: ElevatedButton(
-            onPressed: () => GoRouter.of(context).goNamed('catalog'),
+            onPressed: () => context.goNamed('catalog'),
             style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                   fontSize: 14,
@@ -114,39 +121,31 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildCarsMonthlyOfferSection() {
-    return PageSection(
-      titleEvent: 'Offres du mois',
-      iconEvent: Icons.local_fire_department,
-      widget: FutureBuilder<List<Car>>(
-          future: futureFeaturedCars,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return CarGrid(cars: snapshot.data!);
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else {
-              return const CircularProgressIndicator();
-            }
-          }),
-    );
+    return FutureBuilder<List<Car>>(
+        future: futureFeaturedCars,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return CarGrid(cars: snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return const CircularProgressIndicator();
+          }
+        });
   }
 
   Widget _buildCarsNewArrivalSection() {
-    return PageSection(
-      titleEvent: 'Nos nouveautés',
-      iconColor: Colors.blue,
-      widget: FutureBuilder<List<Car>>(
-          future: futureNewArrivalCars,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return CarGrid(cars: snapshot.data!);
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else {
-              return const CircularProgressIndicator();
-            }
-          }),
-    );
+    return FutureBuilder<List<Car>>(
+        future: futureNewArrivalCars,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return CarGrid(cars: snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return const CircularProgressIndicator();
+          }
+        });
   }
 
   Widget _buildTitleSection() {

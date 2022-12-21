@@ -3,7 +3,6 @@ import 'package:autobaloo/views/components/autobaloo_logo.dart';
 import 'package:autobaloo/views/components/navbar.dart';
 import 'package:autobaloo/views/sections/footer_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfire_ui/auth.dart';
 import 'package:go_router/go_router.dart';
 
 class MainLayout extends StatelessWidget {
@@ -27,32 +26,7 @@ class MainLayout extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.person),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<ProfileScreen>(
-                        builder: (context) => ProfileScreen(
-                            appBar: AppBar(
-                              title: const Text('User Profile'),
-                              backgroundColor: Colors.teal.shade300,
-                            ),
-                            actions: [
-                              SignedOutAction((context) {
-                                Navigator.of(context).pop();
-                              })
-                            ],
-                          children: [
-                            const Divider(),
-                            Padding(
-                              padding: const EdgeInsets.all(2),
-                              child: AspectRatio(
-                                aspectRatio: 1,
-                                child: Image.asset('images/ab-ambiant1.png'),
-                              ),
-                            ),
-                          ]),
-                      ),
-                    );
-                    // GoRouter.of(context).push('/account');
+                    context.goNamed('profile');
                   },
                 ),
                 const AppInfo()
@@ -61,7 +35,6 @@ class MainLayout extends StatelessWidget {
             ),
             drawer: const NavBar(),
             body: ListView(
-              shrinkWrap: true,
               children: [...children, const FooterSection()],
             ));
       },

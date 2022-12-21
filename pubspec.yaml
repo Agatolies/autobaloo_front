@@ -48,6 +48,7 @@ dependencies:
   http: ^0.13.5
   jwt_decoder: ^2.0.1
   responsive_grid: ^2.1.0
+  url_launcher: ^6.1.7
   url_strategy: ^0.2.0
   validators: ^3.0.0
 

@@ -13,12 +13,12 @@ class CarInfoTable extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.only(bottom: 40, right: 80),
+          padding: const EdgeInsets.only(bottom: 40, right: 80),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
+                padding: const EdgeInsets.only(bottom: 6),
                 child: Text(
                   columnName,
                   style: const TextStyle(

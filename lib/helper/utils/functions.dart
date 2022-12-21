@@ -1,3 +1,5 @@
+import 'package:url_launcher/url_launcher.dart';
+
 Map<dynamic, dynamic> list2Map(List<dynamic> list) {
   final Map<dynamic, dynamic> result = {};
 
@@ -8,4 +10,14 @@ Map<dynamic, dynamic> list2Map(List<dynamic> list) {
   }
 
   return result;
+}
+
+Future<void> openUrl(int price) async {
+  final String url =
+      'https://www.paypal.com/paypalme/ldeste/${price}eur';
+  final uri = Uri.parse(url);
+
+  if (!await launchUrl(uri)) {
+    throw 'Could not launch $uri';
+  }
 }

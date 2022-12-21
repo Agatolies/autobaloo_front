@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_single_quotes
+import 'package:autobaloo/views/components/success_image.dart';
+import 'package:autobaloo/views/layouts/main_layout.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../components/success_image.dart';
-import '../layouts/main_layout.dart';
 
 class OrderConfirmationPage extends StatelessWidget {
   const OrderConfirmationPage({super.key});
@@ -29,7 +28,7 @@ class OrderConfirmationPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(right: 30),
                 child: ElevatedButton(
-                    onPressed: () => GoRouter.of(context).goNamed('account'),
+                    onPressed: () => context.goNamed('account'),
                     style: ElevatedButton.styleFrom(
                         textStyle: const TextStyle(
                           fontSize: 14,
@@ -52,7 +51,7 @@ class OrderConfirmationPage extends StatelessWidget {
                     )),
               ),
               ElevatedButton(
-                  onPressed: () => GoRouter.of(context).goNamed('home'),
+                  onPressed: () => context.goNamed('home'),
                   style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(
                       fontSize: 14,

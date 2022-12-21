@@ -21,7 +21,8 @@ class CarCard extends StatelessWidget {
     final modelImage = model.modelImages![0];
 
     return GestureDetector(
-      onTap: () => GoRouter.of(context).push('/car-detail/${car.id}'),
+      onTap: () => context.pushNamed('car-detail',
+          params: <String, String>{'id': car.id.toString()}),
       child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(

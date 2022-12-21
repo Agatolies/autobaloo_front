@@ -14,7 +14,7 @@ class RoadTestCancellationPage extends StatelessWidget{
         children: [
           const Text('Votre essai routier est annulé'),
           ElevatedButton(
-            onPressed: () => GoRouter.of(context).goNamed('account'),
+            onPressed: () => context.goNamed('account'),
             child: const Text('Votre compte'),
           )
         ],

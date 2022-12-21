@@ -32,28 +32,28 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Accueil'),
-            onTap: () => GoRouter.of(context).goNamed('home'),
+            onTap: () => context.goNamed('home'),
           ),
           ListTile(
             leading: const Icon(Icons.account_box),
             title: const Text('Mon compte'),
-            onTap: () => GoRouter.of(context).goNamed('account'),
+            onTap: () => context.goNamed('account'),
           ),
           ListTile(
             leading: const Icon(Icons.car_rental),
             title: const Text('Catalogue'),
-            onTap: () => GoRouter.of(context).goNamed('catalog'),
+            onTap: () => context.goNamed('catalog'),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.login),
             title: const Text('Connexion'),
-            onTap: () => GoRouter.of(context).goNamed('login'),
+            onTap: () => context.goNamed('login'),
           ),
           ListTile(
             leading: const Icon(Icons.signpost),
             title: const Text('Enregistrement'),
-            onTap: () => GoRouter.of(context).goNamed('register'),
+            onTap: () => context.goNamed('register'),
           ),
         ],
       ),

@@ -14,7 +14,7 @@ class RoadTestPage extends StatelessWidget{
         children: [
           const Text('Bonjour, votre inscription a bien été prise en compte. Elle sera active une fois que vous aurez valider notre lien envoyé par mail.'),
           ElevatedButton(
-            onPressed: () => GoRouter.of(context).goNamed('login'),
+            onPressed: () => context.goNamed('login'),
             child: const Text('Connexion'),
           )
         ],

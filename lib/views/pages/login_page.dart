@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                         color: Theme.of(context).primaryColor, fontSize: 15),
                   ),
-                  onPressed: () => GoRouter.of(context).goNamed(
+                  onPressed: () => context.goNamed(
                     'reset-password',
                   ),
                 ),
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                         color: Theme.of(context).primaryColor, fontSize: 15),
                   ),
-                  onPressed: () => GoRouter.of(context).goNamed(
+                  onPressed: () => context.goNamed(
                     'register',
                   ),
                 ),
@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
 
       final response = await authService.login(email, password);
       if (response) {
-        GoRouter.of(context).goNamed('home');
+        context.goNamed('home');
       } else {
         setState(() {
           _errorMessage = 'Erreur lors de la connexion';

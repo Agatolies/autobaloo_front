@@ -14,7 +14,7 @@ class RoadTestConfirmationPage extends StatelessWidget{
         children: [
           const Text('Votre essai routier est confirmé'),
           ElevatedButton(
-            onPressed: () => GoRouter.of(context).goNamed('account'),
+            onPressed: () => context.goNamed('account'),
             child: const Text('Votre compte'),
           )
         ],

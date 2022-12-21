@@ -82,18 +82,9 @@ class _Catalog extends State<CatalogPage> {
                     carouselController: _buttonCarouselController,
                     options: CarouselOptions(
                       height: 490,
-                      aspectRatio: 16 / 9,
                       viewportFraction: viewportFraction,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
                       autoPlay: true,
                       autoPlayInterval: const Duration(seconds: 5),
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: false,
-                      scrollDirection: Axis.horizontal,
                     ),
                   );
                 },

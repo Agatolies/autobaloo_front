@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_single_quotes
 
+import 'package:autobaloo/views/components/success_image.dart';
+import 'package:autobaloo/views/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../components/success_image.dart';
-import '../layouts/main_layout.dart';
 
 class CreatedAccountPage extends StatelessWidget{
   const CreatedAccountPage({super.key});
@@ -27,7 +26,7 @@ class CreatedAccountPage extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                  onPressed: () => GoRouter.of(context).goNamed('home'),
+                  onPressed: () => context.goNamed('home'),
                   style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(
                         fontSize: 14,

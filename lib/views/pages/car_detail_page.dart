@@ -4,14 +4,14 @@ import 'package:autobaloo/services/car_service.dart';
 import 'package:autobaloo/views/components/car_card.dart';
 import 'package:autobaloo/views/components/car_info_table.dart';
 import 'package:autobaloo/views/layouts/main_layout.dart';
-import 'package:autobaloo/views/sections/title_icon.dart';
+import 'package:autobaloo/views/sections/title_section.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CarDetailPage extends StatefulWidget {
-  CarDetailPage({super.key, required this.id});
+  CarDetailPage({super.key, required this.carId});
 
-  final String id;
+  final String carId;
   final CarService carService = CarService();
 
   @override
@@ -24,7 +24,7 @@ class _CarDetail extends State<CarDetailPage> {
   @override
   void initState() {
     super.initState();
-    futureCar = sl.get<CarService>().getCar(widget.id);
+    futureCar = sl.get<CarService>().getCar(widget.carId);
   }
 
   @override
@@ -42,98 +42,64 @@ class _CarDetail extends State<CarDetailPage> {
                 return const CircularProgressIndicator();
               }
             }),
+        const TitleSection(
+            title: 'Fiche technique',
+            subtitle:
+                'Toutes les caractéristiques de la voiture réunies en un seul endroit'),
         Card(
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4),
           ),
-          child: PageSection(
-            titleEvent: 'Général',
-            widget: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(top: 50),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      //TODO : ajouter les paramètres dynamiques
-                      children: const [
-                        CarInfoTable(columnName: 'Type', carInfo: 'Diesel'),
-                        CarInfoTable(columnName: 'Année du modèle', carInfo: '2022'),
-                        CarInfoTable(columnName: 'Couleur', carInfo: 'Noire'),
-                        CarInfoTable(columnName: 'Kilométrage', carInfo: '53.200'),
-                      ],
-                    )
-                ),
-                Container(
-                    margin: const EdgeInsets.only(top: 50),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      //TODO : ajouter les paramètres dynamiques
-                      children: const [
-                        CarInfoTable(columnName: 'Norme Euro', carInfo: 'EU6'),
-                        CarInfoTable(columnName: 'Puissance', carInfo: '81 kw (110 cv'),
-                        CarInfoTable(columnName: 'Nombre de portes', carInfo: '5'),
-                        CarInfoTable(columnName: 'Nombre de sièges', carInfo: '5'),
-                      ],
-                    )
-                ),
-              ],
-            ),
-              ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //TODO : ajouter les paramètres dynamiques
+                    children: const [
+                      CarInfoTable(columnName: 'Type', carInfo: 'Diesel'),
+                      CarInfoTable(
+                          columnName: 'Année du modèle', carInfo: '2022'),
+                      CarInfoTable(columnName: 'Couleur', carInfo: 'Noire'),
+                      CarInfoTable(
+                          columnName: 'Kilométrage', carInfo: '53.200'),
+                    ],
+                  )),
+              Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //TODO : ajouter les paramètres dynamiques
+                    children: const [
+                      CarInfoTable(columnName: 'Norme Euro', carInfo: 'EU6'),
+                      CarInfoTable(
+                          columnName: 'Puissance', carInfo: '81 kw (110 cv'),
+                      CarInfoTable(
+                          columnName: 'Nombre de portes', carInfo: '5'),
+                      CarInfoTable(
+                          columnName: 'Nombre de sièges', carInfo: '5'),
+                    ],
+                  )),
+            ],
+          ),
         ),
         Container(
           margin: const EdgeInsets.only(top: 30, right: 30, bottom: 30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                margin: const EdgeInsets.only(right: 30),
-                child: ElevatedButton(
-                    onPressed: () => GoRouter.of(context).goNamed('rent'),
-                    style: ElevatedButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        backgroundColor: Colors.teal.shade300,
-                        elevation: 4,
-                        alignment: Alignment.centerLeft,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        maximumSize: const Size(200, 150),
-                        padding: const EdgeInsets.all(20)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Louer'),
-                        Icon(Icons.arrow_circle_right_outlined),
-                      ],
-                    )),
-              ),
-              ElevatedButton(
-                  onPressed: () => GoRouter.of(context).goNamed('order'),
-                  style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      backgroundColor: Colors.teal.shade300,
-                      elevation: 4,
-                      alignment: Alignment.centerLeft,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      maximumSize: const Size(200, 150),
-                      padding: const EdgeInsets.all(20)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Text('Acheter'),
-                      Icon(Icons.arrow_circle_right_outlined),
-                    ],
-                  )),
+              buildButton(
+                  () => context.pushNamed('rent',
+                      params: <String, String>{'id': widget.carId.toString()}),
+                  'Louer'),
+              const SizedBox(width: 30),
+              buildButton(
+                  () => context.pushNamed('order',
+                      params: <String, String>{'id': widget.carId.toString()}),
+                  'Commander'),
             ],
           ),
         ),
@@ -163,6 +129,31 @@ class _CarDetail extends State<CarDetailPage> {
         //         }))
       ],
     );
+  }
+
+  Widget buildButton(VoidCallback onPressed, String title) {
+    return ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+            textStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+            backgroundColor: Colors.teal.shade300,
+            elevation: 4,
+            alignment: Alignment.centerLeft,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            maximumSize: const Size(200, 150),
+            padding: const EdgeInsets.all(20)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(title),
+            const Icon(Icons.arrow_circle_right_outlined),
+          ],
+        ));
   }
 }
 

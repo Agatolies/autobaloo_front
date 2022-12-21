@@ -13,7 +13,7 @@ class AdminPage extends StatelessWidget{
       body : Column(
         children: [
           ElevatedButton(
-            onPressed: () => GoRouter.of(context).goNamed('login'),
+            onPressed: () => context.goNamed('login'),
             child: const Text('Connexion'),
           )
         ],
